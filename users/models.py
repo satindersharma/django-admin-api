@@ -17,7 +17,8 @@ class CustomUser(AbstractUser):
 
 
 class Department(models.Model):
-    id = models.PositiveSmallIntegerField(primary_key=True)
+    # id = models.PositiveSmallIntegerField(primary_key=True,editable=False)
+    id = models.SmallAutoField(primary_key=True)
     department_name = models.CharField(db_column='department_name', max_length=45, unique=True)
 
     def __str__(self):
@@ -28,7 +29,7 @@ class Department(models.Model):
 
 
 class Role(models.Model):
-    id = models.PositiveSmallIntegerField(primary_key=True)
+    id = models.SmallAutoField(primary_key=True,editable=False)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     role_name = models.CharField(max_length=45)

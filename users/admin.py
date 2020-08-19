@@ -53,6 +53,7 @@ class RoleInline(admin.TabularInline):
     model = Role
     extra = 1
     max_num =1
+    fields = ('department', 'role_name')
 
 class DepartmentInline(admin.StackedInline):
     model = Department
@@ -61,12 +62,20 @@ class DepartmentInline(admin.StackedInline):
 class RoleAdmin(admin.ModelAdmin):
 
     list_display = ('department', 'role_name','user')
-
+    list_filter = ('department','role_name',)
     # def view_role(self, obj):
     #     return obj.role_name
 
     # view_role.empty_value_display = '???'
 
+class DepartmentAdmin(admin.ModelAdmin):
+
+    list_display = ('department', 'role_name','user')
+
+    # def view_role(self, obj):
+    #     return obj.role_name
+
+    # view_role.empty_value_display = '???'
 
 
 class CustomUserAdmin(UserAdmin):

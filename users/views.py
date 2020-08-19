@@ -3,13 +3,15 @@ from django.contrib.auth.models import Group
 from rest_framework import authentication
 from rest_framework import exceptions
 from rest_framework.generics import RetrieveAPIView
-from .serializers import UserSerializer, GroupSerializer
+from .serializers import UserSerializer, GroupSerializer, ListAllUserSerializer
 from rest_framework import viewsets
 from rest_framework import permissions
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import AllowAny
 
 
 
@@ -19,9 +21,14 @@ class SignUp(generic.CreateView):
     template_name = 'signup.html'
 
 
-
-
 # ViewSets define the view behavior.
+
+
+class AllUserListVIew(ListAPIView):
+    queryset = get_user_model().objects.all().order_by('-date_joined')
+    serializer_class = ListAllUserSerializer
+    permission_classes = [AllowAny]
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -39,8 +46,6 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
-
-
 
 
 class ExampleAuthentication(RetrieveAPIView, authentication.BaseAuthentication):

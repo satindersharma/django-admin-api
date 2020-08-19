@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from rest_auth.registration.serializers import RegisterSerializer
 from rest_auth.serializers import LoginSerializer
 # Serializers define the API representation.
-
+from rest_framework.permissions import IsAuthenticated
 
 class CustomRegisterSerializer(RegisterSerializer):
     # email = serializers.EmailField(required=allauth_settings.EMAIL_REQUIRED)
@@ -15,10 +15,14 @@ class CustomLoginSerializer(LoginSerializer):
     email = None
 
 
+class ListAllUserSerializer(serializers.ModelSerializer):
 
-
+    class Meta:
+        model = get_user_model()
+        fields = ['url', 'username',]
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    
     class Meta:
         model = get_user_model()
         # fields = ['url', 'username', 'email','date_joined',]
