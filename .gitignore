@@ -9,7 +9,7 @@ __pycache__/
 bin/
 include/
 
-ProjectDjangoAdmin/__pycache__
+# ProjectDjangoAdmin/__pycache__
 users/__pycache__
 users/migrations
 
