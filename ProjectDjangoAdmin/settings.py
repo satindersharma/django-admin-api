@@ -25,7 +25,7 @@ SECRET_KEY = '@^d(hg^*!pfc(g72=3ck9vmit9gu90-(3j$qb&2np4o3(_8g2$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.101','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['192.168.0.222','192.168.0.101','127.0.0.1','localhost']
 
 
 # Application definition
@@ -86,6 +86,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 5
 }
@@ -125,12 +131,23 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'adminpanel',
         'USER': 'root',
-        'PASSWORD': 'satyam12',
-        'HOST': '127.0.0.1',
+      'PASSWORD': 'Singh$55#321',
+        # 'PASSWORD': 'satyam12',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'adminpanel',
+#         'USER': 'root',
+#         'PASSWORD': 'Singh$55#321',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
