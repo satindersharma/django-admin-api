@@ -7,7 +7,7 @@
         "label": "Django: Run Server",
         "type": "shell",
         "command": "${config:python.pythonPath}",
-        "args": ["manage.py", "runserver"],
+        "args": ["manage.py", "runserver","0.0.0.0:8000"],
         "group": {
           "kind": "build",
           "isDefault": true

@@ -25,7 +25,7 @@ SECRET_KEY = '@^d(hg^*!pfc(g72=3ck9vmit9gu90-(3j$qb&2np4o3(_8g2$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.101','127.0.0.1','localhost']
 
 
 # Application definition
@@ -83,9 +83,13 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ProjectDjangoAdmin.urls'
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 5
 }
+
 
 TEMPLATES = [
     {
