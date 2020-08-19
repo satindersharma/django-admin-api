@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="loginsingup">
+  {% comment %}
+  <div>
+    <a href="/admin/" class="social">admin</a> |
+    <a href="{% url 'login' %}" class="social">login</a> |
+    <a href="{% url 'signup' %}" class="social">signup</a> |
+    <a href="{% url 'home' %}" class="social">Home</a> |
+    <a href="{% url 'logout' %}" class="social">Logout</a> |
+    <a href="/api/" class="social">api</a> |
+    <a href="{% url 'userhome' %}" class="social">User Home</a>
+  </div>
+  <h1>Welcome to home page</h1>
+  <h6>{{user}}</h6>
+  <h6>{{user.is_authenticated}}</h6>
+  <img src="{% static 'img/404.svg' %}" />{% endcomment %}
+
+  <div class="head-element">
+    <a href="/admin/" class="social">admin</a> |
+    <a href="{% url 'home' %}" class="social">Home</a>
+    {% if user.is_authenticated %}
+  Hi {{ user.username }}!
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+ 
+  </div>
+
+  {% comment %}
+  <footer>
+    <p>
+      Created with <i class="fa fa-heart"></i> by
+      <a target="_blank" href="http://satyam.pythonanywhere.com/"
+        >Satinder Sharma</a
+      >.
+    </p>
+  </footer>
+  {% endcomment %}
+</div>
+{% endblock content %}
