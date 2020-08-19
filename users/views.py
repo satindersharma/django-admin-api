@@ -12,8 +12,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import AllowAny
-
-
+from rest_framework.renderers import JSONRenderer
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -25,14 +24,21 @@ class SignUp(generic.CreateView):
 
 
 class AllUserListVIew(ListAPIView):
+    '''
+    API Endpoint for all users
+    '''
     queryset = get_user_model().objects.all().order_by('-date_joined')
     serializer_class = ListAllUserSerializer
     permission_classes = [AllowAny]
+    renderer_classes = [JSONRenderer]
+    pagination_class = None
 
 
 class UserViewSet(viewsets.ModelViewSet):
+
     """
     API endpoint that allows users to be viewed or edited.
+
     """
     queryset = get_user_model().objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
@@ -40,6 +46,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class GroupViewSet(viewsets.ModelViewSet):
+
     """
     API endpoint that allows groups to be viewed or edited.
     """

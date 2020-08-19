@@ -5,6 +5,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .models import CustomUser, Department, Role
+from django.contrib.sites.models import Site
+
 
 
 '''
@@ -80,16 +82,17 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 class CustomUserAdmin(UserAdmin):
     date_hierarchy = 'date_joined'
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff','view_role')
+    # list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff','view_role')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
     model = CustomUser
     inlines = [
         RoleInline,
     ]
 
-    def view_role(self, obj):
-        return Role.objects.get(id=obj.id)
-    view_role.short_description = 'Role Assign'
-    view_role.empty_value_display = 'No Role'
+    # def view_role(self, obj):
+    #     return Role.objects.get(id=obj.id)
+    # view_role.short_description = 'Role Assign'
+    # view_role.empty_value_display = 'No Role'
 
 
 admin.site.register(Department)
@@ -100,5 +103,5 @@ admin.site.register(Role, RoleAdmin)
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
-
+admin.site.unregister(Site)
 

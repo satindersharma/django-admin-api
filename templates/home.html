@@ -18,13 +18,15 @@
   <div class="head-element">
     <a href="/admin/" class="social">admin</a> |
     <a href="{% url 'home' %}" class="social">Home</a>
+    {% comment %}
     {% if user.is_authenticated %}
   Hi {{ user.username }}!
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a>
 {% endif %}
- 
+{% endcomment %}
+
   </div>
 
   {% comment %}

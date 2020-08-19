@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django.contrib.sites',
     'allauth',
-    'allauth.account',
+    # 'allauth.account',
     'users',
     # 'Department',
 ]

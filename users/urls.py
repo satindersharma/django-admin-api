@@ -10,7 +10,7 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('alluser/', include(router.urls)),
-    path('all/', AllUserListVIew.as_view()),
+    path('all/', AllUserListVIew.as_view(),name='all'),
     # path('', include('django.contrib.auth.urls')), # login
     #  path('signup/', SignUp.as_view(), name='signup'),  #signup
     path('rest-auth/', include('rest_auth.urls')),
