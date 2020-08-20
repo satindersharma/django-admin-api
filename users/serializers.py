@@ -31,7 +31,7 @@ class ListAllUserSerializer(serializers.ModelSerializer):
     '''
     class Meta:
         model = get_user_model()
-        fields = ['username', ]
+        fields = ['id','username', 'date_joined']
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
