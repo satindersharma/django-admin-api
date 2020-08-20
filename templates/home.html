@@ -17,7 +17,11 @@
 
   <div class="head-element">
     <a href="/admin/" class="social">admin</a> |
-    <a href="{% url 'home' %}" class="social">Home</a>
+    <a href="{% url 'home' %}" class="social">Home</a> |
+    <a href="{% url 'rest_login' %}" class="social">Login</a> |
+    <a href="{% url 'rest_user_details' %}" class="social">User Details</a> |
+    <a href="{% url 'all' %}" class="social">all</a> |
+    <a href="{% url 'rest_logout' %}" class="social">Logout</a>
     {% comment %}
     {% if user.is_authenticated %}
   Hi {{ user.username }}!
