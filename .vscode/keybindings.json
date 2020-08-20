@@ -1,0 +1,4 @@
+{
+  "key": "ctrl+shift+alt+space",
+  "command": "workbench.files.action.collapseExplorerFolders"
+}
